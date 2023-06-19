@@ -15,8 +15,8 @@ jobs:
 
       - name: Do Work
         run: |
-          echo '::set-output name=FAV_NUMBER::3'
-          echo '::set-output name=FAV_COLOR::blue'
+          echo "FAV_NUMBER=3" >> $GITHUB_OUTPUT
+          echo "FAV_COLOR=blue" >> $GITHUB_OUTPUT
         id: abc
       
       - name: Read output
