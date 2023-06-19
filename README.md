@@ -1,1 +1,1 @@
-# -awesome-github-actions
+# awesome-github-actions
