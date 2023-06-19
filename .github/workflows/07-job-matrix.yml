@@ -2,21 +2,18 @@ name: job-matrix
 
 on:
   push:
-    paths:
-      - '07-job-matrix/**'
-      - '.github/workflows/07-job-matrix.yml'
   
 jobs:
   my-job:
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-18.04, ubuntu-22.04]
         node: [12, 14, 16]
         exclude:
         - os: ubuntu-18.04
           node: 12
 
-    runs-on: ${{ matrix.os }}   
+    runs-on: [ self-hosted, Linux ]   
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js
@@ -28,9 +25,7 @@ jobs:
         run: cat /etc/os-release
         
       - name: Install dependencies
-        working-directory: ./07-job-matrix
         run: npm ci
         
       - name: Run tests
-        working-directory: ./07-job-matrix
         run: npm test
