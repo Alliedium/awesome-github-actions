@@ -16,7 +16,7 @@ jobs:
         - os: ubuntu-18.04
           node: 12
 
-    runs-on: [ self-hosted, Linux, "${{ matrix.os }}" ]   
+    runs-on: ${{ matrix.os }}   
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js

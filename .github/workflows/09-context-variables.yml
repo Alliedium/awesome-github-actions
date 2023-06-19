@@ -6,6 +6,11 @@ on:
       - '09-context-variables/**'
       - '.github/workflows/09-context-variables.yml'
 
+  pull_request:
+      paths:
+      - '11-tmate/**'
+      - '.github/workflows/11-tmate.yml'
+
 jobs:
   use-contexts:
     runs-on: ubuntu-latest
