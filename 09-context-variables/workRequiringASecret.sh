@@ -1,1 +1,1 @@
-echo "This is our new example. Print secret [$A_SECRET]"
+echo "This is our new example. Print secret [$A_SECRET] "
