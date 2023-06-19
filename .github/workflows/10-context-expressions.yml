@@ -10,6 +10,10 @@ jobs:
         greeting: [Hello, Howdy, Hey]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Print current path
+        working-directory: ./10-context-expressions
+        run: pwd
       - name: Print if 'Hello'
         if: ${{ matrix.greeting == 'Hello' }}
         run: echo "greeting is Hello"
@@ -33,15 +37,12 @@ jobs:
       - name: Success
         if: ${{ success() }}
         run: echo "Still running..."
-      -
-        name: Always
+      - name: Always
         if: ${{ always() }}
         run: echo "You will always see this"
-      -
-        name: Cancelled
+      - name: Cancelled
         if: ${{ cancelled() }}
         run: echo "You canceled the workflow"
-      -
-        name: Failure
+      - name: Failure
         if: ${{ failure() }}
         run: echo "Something went wrong..."

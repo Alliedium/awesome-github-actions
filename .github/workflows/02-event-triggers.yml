@@ -21,7 +21,14 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Print current path
+        working-directory: ./02-event-triggers
+        run: pwd
+
       - name: Event
         run: echo "Triggered by $GITHUB_EVENT_NAME"
+
       - name: Say Hello
         run: echo "Hello world!"

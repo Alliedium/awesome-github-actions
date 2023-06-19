@@ -7,16 +7,21 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Say Hello
+      - uses: actions/checkout@v2
+
+      - name: Print current path
+        working-directory: ./01-hello-world
+        run: pwd
+
+      - name: Say Hello
         run: echo "Hello world!"
-      -
-        name: Do stuff
+
+      - name: Do stuff
         run: |
           echo "Step 1..."
           echo "Step 2..."
           echo "Step 3..."
           echo "Step 4..."
-      -
-        name: Say Goodbye
+
+      - name: Say Goodbye
         run: echo "Goodbye!"

@@ -11,16 +11,21 @@ jobs:
     env:
       VIDI: 'I saw'
     steps:
-      -
-        name: Show me the vars
+      - uses: actions/checkout@v2
+
+      - name: Print current path
+        working-directory: ./04-environment-variables
+        run: pwd
+      
+      - name: Show me the vars
         run: echo "$VENI, $VIDI, $VICI"
         env:
           VICI: 'I conquered'
-      -
-        name: Create env var
+      
+      - name: Create env var
         run: echo "foo=bar" >> $GITHUB_ENV
-      -
-        name: Useful default vars
+      
+      - name: Useful default vars
         run: |
           echo "Workflow name:  $GITHUB_WORKFLOW"
           echo "Workspace:      $GITHUB_WORKSPACE"

@@ -7,6 +7,12 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Print current path
+        working-directory: ./06-job-ordering
+        run: pwd
+
       - run: echo "Doing work parallel with job2"
   job2:
     runs-on: ubuntu-latest
