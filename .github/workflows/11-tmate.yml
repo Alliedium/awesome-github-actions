@@ -1,0 +1,30 @@
+name: tmate
+
+on:
+  push:
+    paths:
+      - '11-tmate/**'
+      - '.github/workflows/11-tmate.yml'
+
+  
+jobs:
+  my-job:          
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          
+      - name: Print OS-release
+        run: cat /etc/os-release
+        
+      - name: Run tests
+        working-directory: ./11-tmate
+        run: npm test
+        
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3.11
+  

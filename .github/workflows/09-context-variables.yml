@@ -1,0 +1,32 @@
+name: contexts-example
+
+on:
+  push:
+    paths:
+      - '09-context-variables/**'
+      - '.github/workflows/09-context-variables.yml'
+
+jobs:
+  use-contexts:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        greeting: [Hello, Howdy, Hey]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Print greeting
+        run: echo ${{ matrix.greeting }}
+        env:
+          GREETING: ${{ matrix.greeting }}
+
+      - name: Do work with a secret
+        working-directory: ./09-context-variables
+        run: ./workRequiringASecret.sh
+        env:
+          A_SECRET: ${{ secrets.USERNAME }}
+
+      - name: Run only for pulls
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo "Triggered by a pull request"
