@@ -14,7 +14,9 @@ jobs:
           node-version: '15.8.0'
       -
         name: Install repo dependencies
+        working-directory: ./03-actions
         run: npm install
       -
         name: Run script from repo
+        working-directory: ./03-actions
         run: node helloWorld.js
