@@ -2,17 +2,17 @@ name: event-triggers-example
 on:
   push:
     branches: 
-      - 'develop'
-      - 'foo/*'
-      - 'foo/**'
-      - '!foo/*/456'
+      - '02-develop'
+      - '02-foo/*'
+      - '02-foo/**'
+      - '!02-foo/*/456'
     tags:
       - '*'
     paths:
       - '.github/workflows/02-event-triggers.yml'
   pull_request:
     branches:
-      - 'develop'
+      - '02-develop'
     paths:
       - '.github/workflows/02-event-triggers.yml'
   schedule:
