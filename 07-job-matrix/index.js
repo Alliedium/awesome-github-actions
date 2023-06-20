@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 const boxen = require("boxen");
 
-const greeting = chalk.white.bold("Hello! ");
+const greeting = chalk.white.bold("Hello!");
 
 const boxenOptions = {
  padding: 1,
