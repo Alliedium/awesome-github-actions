@@ -12,7 +12,7 @@ jobs:
       - name: Print current path
         working-directory: ./08-outputs
         run: pwd
-
+ 
       - name: Do Work
         run: |
           echo "FAV_NUMBER=3" >> $GITHUB_OUTPUT
