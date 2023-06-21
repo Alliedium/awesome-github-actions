@@ -8,8 +8,8 @@ on:
 
   pull_request:
       paths:
-      - '11-tmate/**'
-      - '.github/workflows/11-tmate.yml'
+      - '09-context-variables/**'
+      - '.github/workflows/09-context-variables.yml'
 
 jobs:
   use-contexts:
