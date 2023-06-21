@@ -2,6 +2,9 @@ name: job-matrix
 
 on:
   push:
+    paths:
+      - '07-job-matrix/**'
+      - '.github/workflows/07-job-matrix.yml'
   
 jobs:
   my-job:
