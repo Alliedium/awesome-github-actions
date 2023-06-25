@@ -5,6 +5,8 @@ ARG G_ID=1000
 ARG REPO_URL
 ARG TOKEN
 ARG RUUNER_APP_VERSION='2.305.0'
+ARG LABELS='ubuntu-18.04'
+ARG RUNNER_NAME='docker-runner'
 
 RUN if [  -z $REPO_URL ];then \
     >&2 echo "REPO_URL is empty!" ; \
@@ -40,6 +42,6 @@ RUN chown -R $UID:$GID /home/runner
 USER runner
 
 # Configure the runner
-RUN (echo ''; echo 'docker-runner'; echo 'ubuntu-18.04';) | ./config.sh --url $REPO_URL --token $TOKEN
+RUN (echo ''; echo $RUNNER_NAME; echo $LABELS;) | ./config.sh --url $REPO_URL --token $TOKEN
 # Start the runner
 ENTRYPOINT ["./run.sh"]
