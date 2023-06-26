@@ -192,7 +192,7 @@ To exit the terminal, create a file with `continue` name.
 
 ![delete_runner](./images/delete_runner.png)
 
-Run in Runner terminal command
+Navigate to `actions-runner` folder and in Runner terminal run command
 
 ```
 ./config.sh remove --token AL24AM5N3UAUQDRAKNU5XJDETDEBC
