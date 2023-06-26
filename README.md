@@ -46,7 +46,7 @@ job contains a list of steps that execute in order when the job runs. These step
 git clone https://github.com/<fork-repo>/awesome-github-actions.git $HOME/awesome-github-actions
 ```
 
-Here and below <fork-repo> - matches your fork repo
+Here and below `<fork-repo>` - matches your fork repo
 
 ### 3. Add self-hosted Linux runner to `GitHub` repository.
 
