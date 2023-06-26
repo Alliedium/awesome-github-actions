@@ -43,8 +43,10 @@ job contains a list of steps that execute in order when the job runs. These step
 ### 2. Clone [project](https://github.com/Alliedium/awesome-github-actions)
 
 ```
-git clone https://github.com/bbs-md/awesome-github-actions.git $HOME/awesome-github-actions
+git clone https://github.com/<fork-repo>/awesome-github-actions.git $HOME/awesome-github-actions
 ```
+
+Here and below <fork-repo> - matches your fork repo
 
 ### 3. Add self-hosted Linux runner to `GitHub` repository.
 
@@ -73,7 +75,7 @@ tar xzf ./actions-runner-linux-x64-2.305.0.tar.gz
 - Create the runner and start the configuration experience
 
 ```
-./config.sh --url https://github.com/bbs-md/awesome-github-actions --token AL24AM7L6GS3RRSBBTGSSILESXOW6
+./config.sh --url https://github.com/<fork-repo>/awesome-github-actions --token AL24AM7L6GS3RRSBBTGSSILESXOW6
 ```
 
 - run it!
@@ -107,7 +109,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression
 - Create the runner and start the configuration experience
 
 ```
-./config.cmd --url https://github.com/bbs-md/awesome-github-actions --token AL24AM56SRAXQCYI7PF7KW3ES5ILY
+./config.cmd --url https://github.com/<fork-repo>/awesome-github-actions --token AL24AM56SRAXQCYI7PF7KW3ES5ILY
 ```
 
 
@@ -136,7 +138,7 @@ cd $HOME/awesome-github-actions/07-job-matrix
 
 ```
 docker build -t runner:0.1 \
-	--build-arg REPO_URL=https://github.com/bbs-md/awesome-github-actions \
+	--build-arg REPO_URL=https://github.com/<fork-repo>/awesome-github-actions \
 	--build-arg TOKEN='AL24AMZNNIJVECQ34ANMH23ESNYCW' \
     --build-arg LABELS='ubuntu-18.04' \
     --build-arg RUNNER_NAME='docker-runner' \
