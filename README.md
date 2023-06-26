@@ -137,10 +137,11 @@ cd $HOME/awesome-github-actions/07-job-matrix
 ```
 docker build -t runner:0.1 \
 	--build-arg REPO_URL=https://github.com/bbs-md/awesome-github-actions \
-	--build-arg TOKEN=AL24AMZNNIJVECQ34ANMH23ESNYCW \
+	--build-arg TOKEN='AL24AMZNNIJVECQ34ANMH23ESNYCW' \
     --build-arg LABELS='ubuntu-18.04' \
     --build-arg RUNNER_NAME='docker-runner' \
- -f ./Dockerfile4 .
+    -f $HOME/awesome-github-actions/07-job-matrix/Dockerfile \
+    $HOME/awesome-github-actions/07-job-matrix
  ```
 
 - Run `docker` image
