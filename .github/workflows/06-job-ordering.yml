@@ -1,4 +1,4 @@
-name: parallel-jobs
+name: job-ordering
 on:
   push:
     paths:
