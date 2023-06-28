@@ -399,6 +399,34 @@ continue workflow run by creating file:
 touch /continue
 ```
 
+## Example 12: Postgres service
+This example workflow configures a `PostgreSQL` service container, and automatically maps port `5432` in the service container to a _randomly_ chosen available port on the `host`. The `job context` is used to access the number of the port that was assigned on the host.
+```yaml
+jobs:
+  postgres-job:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        ports:
+          # Maps TCP port 5432 in the service container to a randomly chosen available port on the host.
+          - 5432
+```
+
+## Example 13: Get secret value
+Get a value of the secret with the name `NEW_SECRET`. If the secret does not exist value will be empty. Please create a secret with the same name or replace name with the one of an existing secret
+```yaml
+    steps:
+      - name: Echo secret's value
+        run: |
+          echo "Masked: "
+          echo ${{ secrets.NEW_SECRET }}    
+          echo "Unmasked: "
+          echo ${{ secrets.NEW_SECRET }} | sed 's/./& /g'
+```
 ## Nektos Act
 ### Install Nektos Act on Ubuntu Jammy
 
@@ -459,8 +487,9 @@ act -P ubuntu-latest=catthehacker/ubuntu:act-20.04
 11. [Outputs for jobs](https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs)
 12. [Output commands](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
 13. [Tmate actions](https://github.com/mxschmitt/action-tmate)
+14. [Job services](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idservices)
 
 #### Act
-14. [Act](https://github.com/nektos/act)
-15. [GitHub Actions on your local machine](https://dev.to/ken_mwaura1/run-github-actions-on-your-local-machine-bdm)
-16. [Debug GitHub Actions locally with act](https://everyday.codes/tutorials/debug-github-actions-locally-with-act/)
+15. [Act](https://github.com/nektos/act)
+16. [GitHub Actions on your local machine](https://dev.to/ken_mwaura1/run-github-actions-on-your-local-machine-bdm)
+17. [Debug GitHub Actions locally with act](https://everyday.codes/tutorials/debug-github-actions-locally-with-act/)
