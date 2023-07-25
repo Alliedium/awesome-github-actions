@@ -59,7 +59,7 @@ The keyword `runs-on` configures the job to run on the latest version of an Ubun
    Next step sets option `working-directory` to the indicated path and prints current path.
    ```yaml
             steps:
-              - uses: actions/checkout@v2
+              - uses: actions/checkout@v3
        
               - name: Print current path
                 working-directory: ./01-hello-world
@@ -121,8 +121,8 @@ GitHub officially supports many common [actions](https://github.com/actions).
 Example of usage of the different actions in workflow:
    ```yaml
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '15.8.0'
    ```
@@ -194,7 +194,7 @@ jobs:
   job-b:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 ```
 
 ## Example 06: Job ordering
@@ -246,10 +246,10 @@ evaluated after the `exclude` rules.
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-22.04]
-        node: [12, 14, 16]
+        node: [14, 16, 18]
         exclude:
         - os: ubuntu-18.04
-          node: 12
+          node: 14
 ```
 
 ## Example 07a: [Self-hosted runners for multiple jobs](./README_SELFHOSTED_RUNNERS.md)
@@ -444,11 +444,15 @@ act -l
 2. View all jobs triggered by events, e.g. by `pull_request`
 ```shell
 act <event-name> -l
+```
+```shell
 act pull_request -l
 ```
 or in the certain workflow file, e.g. in `main.yaml`
 ```shell
 act <file-name> -l
+```
+```shell
 act main.yaml -l
 ```
 3. Run job with a specific name:
@@ -462,7 +466,17 @@ act --workflows .github/workflows/main.yml --verbose --job my-job
 5. Use alternative environment to run your workflows. `runner-image-name` - should be same as in the workflow `yaml` file
 ```shell
 act -P <runner-image-name>=<image-to-be-used>
+```
+```shell
 act -P ubuntu-latest=catthehacker/ubuntu:act-20.04
+```
+6. If your workflow file has `tmate` section (See Example 11) you may access it using docker commands
+```shell
+watch docker ps
+```
+copy container first three symbols of the container ID <XYZ> and run the command    
+```shell
+docker exec -it <XYZ> sh
 ```
 
 ## [Ignite migration tool](https://github.com/Alliedium/ignite-migration-tool)
