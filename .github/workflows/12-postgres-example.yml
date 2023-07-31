@@ -11,7 +11,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST: postgres
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         ports:
           # Maps TCP port 5432 in the service container to a randomly chosen available port on the host.
@@ -19,4 +21,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
+      - name: run postgres
+        env:
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        run: pg_isready -h localhost -p ${POSTGRES_PORT}
