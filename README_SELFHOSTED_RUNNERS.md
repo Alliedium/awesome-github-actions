@@ -47,21 +47,26 @@ Run commands on the Linux VM `runner`
 mkdir actions-runner && cd actions-runner
 ```
 
-- Download the latest runner package
+- Download the latest runner package      
 
+  If you prefer to use the last version of `action runners`, run the command using tool [lastversion](https://github.com/dvershinin/lastversion):     
+```shell
+lastversion --assets https://github.com/actions/runner/releases/download --filter "actions-runner-linux-x64-(\d{0,3}\.\d{0,3}\.\d{0,3}).tar.gz"
 ```
+The output of the command is the URL to the actions-runner-linux-x64 resource with the latest version of the downloading file. Use this URL in the following command and the version of the actions-runner from the output in the other commands below. In our case, all commands are provided with the version `2.305.0`.
+```shell
 curl -o actions-runner-linux-x64-2.305.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.305.0/actions-runner-linux-x64-2.305.0.tar.gz
 ```
 
 - Extract the installer
 
-```
+```shell
 tar xzf ./actions-runner-linux-x64-2.305.0.tar.gz
 ```
 
-- Create the runner and start the configuration experience
+- Create the runner and start the configuration experience:
 
-```
+```shell
 ./config.sh --url https://github.com/Alliedium/awesome-github-actions --token AL24AM7L6GS3RRSBBTGSSILESXOW6
 ```
 Replace the `https://github.com/Alliedium/awesome-github-actions`  repository URL with the fork URL you created
@@ -110,7 +115,7 @@ Replace the `https://github.com/Alliedium/awesome-github-actions`  repository UR
 
 - Use this YAML in your workflow file for each job
   
-```
+```yaml
 runs-on: self-hosted
 ```
 
@@ -143,18 +148,18 @@ Replace the `https://github.com/Alliedium/awesome-github-actions`  repository UR
 docker run --name runner -d runner:0.1
 ```
 
-### 4. Run workflow jobs on Linux runners
+### 4. Run workflow jobs on self-hosted Linux runners
 
 We used the `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file as a workflow example for self-hosted runners.
 
 Copy `$HOME/awesome-github-actions/07-job-matrix/workflows/self-hosted-wf.yml` file content to `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file.
 
 Workflow will execute on any runner that matches all the specified runs-on values
-This `runs-on: [ self-hosted, Linux ]` matches all Linux runners.
+This `runs-on: [ self-hosted, Linux ]` matches all self-hosted Linux runners.
 
-As you can see, the job runs on any Linux runner, regardless of the version of the Linux distribution specified in the job
+As you can see, the job runs on any self-hosted Linux runner, regardless of the version of the Linux distribution specified in the job
 
-### 5. Run workflow jobs on Linux runners that match the distribution version, specified in the job.
+### 5. Run workflow jobs on self-hosted Linux runners that match the distribution version, specified in the job.
 
 Copy `$HOME/awesome-github-actions/07-job-matrix/workflows/self-hosted-labels-wf.yml` file content to `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file.
 

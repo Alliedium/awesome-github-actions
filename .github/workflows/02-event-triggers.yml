@@ -16,7 +16,7 @@ on:
     paths:
       - '.github/workflows/02-event-triggers.yml'
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/45 9-12 * * 1,4'
 jobs:
   say-hello:
     runs-on: ubuntu-latest

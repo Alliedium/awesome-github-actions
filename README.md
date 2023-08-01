@@ -507,3 +507,6 @@ docker exec -it <XYZ> sh
 15. [Act](https://github.com/nektos/act)
 16. [GitHub Actions on your local machine](https://dev.to/ken_mwaura1/run-github-actions-on-your-local-machine-bdm)
 17. [Debug GitHub Actions locally with act](https://everyday.codes/tutorials/debug-github-actions-locally-with-act/)
+
+#### Tools
+18. [Lastversion tool](https://github.com/dvershinin/lastversion)
