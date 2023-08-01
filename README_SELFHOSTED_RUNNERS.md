@@ -5,7 +5,7 @@
 
 ## Prerequisites:
 
-  ### 1. Create VMs to use as a self-hosted runners
+  ### 1. Create VMs to use as self-hosted runners
 
   - To create VMs in `Proxmox` use [scripts](https://github.com/Alliedium/awesome-proxmox/tree/main/vm-cloud-init-shell#vm-provisioning-scripts-based-on-cloud-init-images)
 
@@ -23,7 +23,7 @@
  
 ## Repository-level runners
 
-### 1. Create fork from the [main repository](https://github.com/Alliedium/awesome-github-actions)
+### 1. Create a fork from the [main repository](https://github.com/Alliedium/awesome-github-actions)
 
 ![fork](./images/fork.png)
 
@@ -35,11 +35,11 @@ git clone https://github.com/Alliedium/awesome-github-actions.git $HOME/awesome-
 
 Replace the `https://github.com/Alliedium/awesome-github-actions.git`  repository URL with the fork URL you created
 
-### 3. Add self-hosted Linux runner to `GitHub` repository.
+### 3. Add a self-hosted Linux runner to the `GitHub` repository.
 
 ![add_runner](./images/add_runner.png)
 
-Run commands on `runner` Linux VM
+Run commands on the Linux VM `runner` 
 
 - Create a `actions-runner` folder
 
@@ -66,13 +66,13 @@ tar xzf ./actions-runner-linux-x64-2.305.0.tar.gz
 ```
 Replace the `https://github.com/Alliedium/awesome-github-actions`  repository URL with the fork URL you created
 
-- run it!
+- Run it!
 
 ```
 ./run.sh
 ```
 
-### 3. Add self-hosted Windows runner to `GitHub` repository.
+### 3. Add a self-hosted Windows runner to the `GitHub` repository.
 
 - In `Windows` machine open `PowerShell`
 - Create a folder under the drive root
@@ -114,7 +114,7 @@ Replace the `https://github.com/Alliedium/awesome-github-actions`  repository UR
 runs-on: self-hosted
 ```
 
-### 3. Add self-hosted docker runner to `GitHub` repository.
+### 3. Add a self-hosted docker runner to the `GitHub` repository.
 
 - Navigate to `awesome-github-actions/07-job-matrix/` folder
 
@@ -122,7 +122,7 @@ runs-on: self-hosted
 cd $HOME/awesome-github-actions/07-job-matrix
 ```
 
-- Build `docker` image
+- Build a `docker` image
 
 
 ```
@@ -145,16 +145,16 @@ docker run --name runner -d runner:0.1
 
 ### 4. Run workflow jobs on Linux runners
 
-For our runner examples we used the `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file.
+We used the `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file as a workflow example for self-hosted runners.
 
 Copy `$HOME/awesome-github-actions/07-job-matrix/workflows/self-hosted-wf.yml` file content to `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file.
 
-Workflow will execute on any runner that matches all of the specified runs-on values
+Workflow will execute on any runner that matches all the specified runs-on values
 This `runs-on: [ self-hosted, Linux ]` matches all Linux runners.
 
 As you can see, the job runs on any Linux runner, regardless of the version of the Linux distribution specified in the job
 
-### 5. Run workflow jobs on Linux runners that match distribution version, specified in job.
+### 5. Run workflow jobs on Linux runners that match the distribution version, specified in the job.
 
 Copy `$HOME/awesome-github-actions/07-job-matrix/workflows/self-hosted-labels-wf.yml` file content to `$HOME/awesome-github-actions/.github/workflows/07-job-matrix.yml` file.
 
@@ -178,14 +178,14 @@ This workflow will fail because running `npm test` without `npm ci`.
 
 ![tmate](./images/tmate.png)
 
-Fix the issue in terminal. 
+Fix the issue in the terminal. 
 To exit the terminal, create a file with `continue` name.
 
-### 8. Deleting running from repo
+### 8. Deleting runner from the repo
 
 ![delete_runner](./images/delete_runner.png)
 
-Navigate to `actions-runner` folder and in Runner terminal run command
+Navigate to the `actions-runner` folder and in the Runner terminal run the command
 
 ```
 ./config.sh remove --token AL24AM5N3UAUQDRAKNU5XJDETDEBC
