@@ -1,4 +1,4 @@
-name: parallel-jobs
+name: job-ordering
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Print current path
         working-directory: ./06-job-ordering

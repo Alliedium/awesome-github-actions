@@ -16,12 +16,12 @@ on:
     paths:
       - '.github/workflows/02-event-triggers.yml'
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/45 9-12 * * 1,4'
 jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Print current path
         working-directory: ./02-event-triggers
