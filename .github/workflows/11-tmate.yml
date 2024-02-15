@@ -1,6 +1,7 @@
 name: tmate
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '11-tmate/**'
